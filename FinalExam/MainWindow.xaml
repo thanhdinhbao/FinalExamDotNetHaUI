@@ -1,0 +1,75 @@
+﻿<Window x:Class="FinalExam.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinalExam"
+        mc:Ignorable="d"
+        Title="Final Exam" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <TextBlock Grid.Row="0" Text="Quản lý sản phẩm" 
+                   FontSize="20" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,10"
+                   FontFamily="Times New Roman"/>
+
+        <!-- Input Fields -->
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Mã sản phẩm" VerticalAlignment="Center" Margin="5" />
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Name="txtMaSanPham" Width="300" HorizontalAlignment="Left"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Tên sản phẩm" VerticalAlignment="Center" Margin="5"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Name="txtTenSanPham" Width="300" HorizontalAlignment="Left"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Số lượng" VerticalAlignment="Center" Margin="5"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Name="txtSoLuong" Width="300" HorizontalAlignment="Left"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Đơn giá" VerticalAlignment="Center" Margin="5"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Name="txtDonGia" Width="300" HorizontalAlignment="Left"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Mã loại" VerticalAlignment="Center" Margin="5"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Margin="5" Name="txtMaLoai" Width="300" HorizontalAlignment="Left"/>
+
+            <!-- Data Area -->
+            <DataGrid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Name="dgSanPham" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="dgSanPham_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã sản phẩm" Binding="{Binding MaSp}" HeaderStyle="{StaticResource styleColumnHeader}"/>
+                    <DataGridTextColumn Header="Tên sản phẩm" Binding="{Binding TenSp}" HeaderStyle="{StaticResource styleColumnHeader}"/>
+                    <DataGridTextColumn Header="Loại sản phẩm" Binding="{Binding TenLoai}" HeaderStyle="{StaticResource styleColumnHeader}"/>
+                    <DataGridTextColumn Header="Số lượng" Binding="{Binding SoLuong}" HeaderStyle="{StaticResource styleColumnHeader}"/>
+                    <DataGridTextColumn Header="Đơn giá" Binding="{Binding DonGia}" HeaderStyle="{StaticResource styleColumnHeader}"/>
+                    <DataGridTextColumn Header="Mã loại" Binding="{Binding MaLoai}" HeaderStyle="{StaticResource styleColumnHeader}"/>
+                    <DataGridTextColumn Header="Thành tiền" Binding="{Binding ThanhTien, StringFormat=N0}" Width="*" HeaderStyle="{StaticResource styleColumnHeader}" CellStyle="{StaticResource styleCell}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <Button Content="Thêm" Width="75" Margin="5" Name="btnThem" Click="btnThem_Click"/>
+                <Button Content="Sửa" Width="75" Margin="5" Name="btnSua" Click="btnSua_Click"/>
+                <Button Content="Xóa" Width="75" Margin="5" Name="btnXoa" Click="btnXoa_Click"/>
+                <Button Content="Tìm" Width="75" Margin="5" Name="btnTim" Click="btnTim_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
